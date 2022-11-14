@@ -2,7 +2,7 @@
 <html>
     <%- include("./partials/head.ejs") %>
     <body>
-        <h1>Budget show page</h1>
+        <h1><%= budget.name %></h1>
 
         <li>
             <h3 style="color:black;"> Date:</h1><%= budget.date %>
@@ -12,6 +12,6 @@
             <h3 style="color:black;">Tags:</h1><%= budget.tags %>
         </li>
 
-        <a href="/budgets"><button>Return to Index</button></a>
+        <a href="/budgets"><button>Return to Main Menu</button></a>
     </body>
 </html>
