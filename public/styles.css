@@ -2,3 +2,12 @@
     background-color: rgb(37, 88, 131);
     color: blanchedalmond;
 }
+.positive{
+    color: green;
+}
+.negative{
+    color: red;
+}
+.nuetral{
+    color: yellow;
+}
