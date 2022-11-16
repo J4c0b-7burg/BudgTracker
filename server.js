@@ -14,22 +14,28 @@ app.use(express.json())
 
 app.get('/budgets', (request, response) => {
     console.log(budgets)
+    const bankTotal = budgets.reduce((total, amount) => total + amount.amount, 0)
+        let className = "nuetral"
+            if (bankTotal < 0){
+             className = "negative"
+            } else if (bankTotal > 0){
+            className = "positive"
+            }else if(bankTotal === 0){
+                className = "nuetral"
+            }
     response.render(
         'index.ejs',
         {
             allBudgets:budgets,
-            budgets
+            budgets,
+            className,
+            bankTotal
         }
     );
 });
 
 app.get("/budgets/new", (request, response) => {
-    response.render(
-        "new.ejs",
-        // {
-        //     allBudgets:budgets
-        // }
-    )
+    response.render("new.ejs",)
 })
 
 app.post("/budgets", (request, response) => {
