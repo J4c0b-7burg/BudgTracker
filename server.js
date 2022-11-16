@@ -14,7 +14,7 @@ app.use(express.json())
 
 app.get('/budgets', (request, response) => {
     console.log(budgets)
-    const bankTotal = budgets.reduce((total, amount) => total + amount.amount, 0)
+    const bankTotal = budgets.reduce((total, amount) => total + +amount.amount, 0)
         let className = "nuetral"
             if (bankTotal < 0){
              className = "negative"
