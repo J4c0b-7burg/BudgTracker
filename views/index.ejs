@@ -3,17 +3,48 @@
     <%- include("./partials/head.ejs") %>
     <body>
         <h1>Main Menu</h1>
+        <h2 class="total">Total:</h2>
         <nav>
             <a href="/budgets/new">Create a New budget</a>
         </nav>
         <ul>
             <% for(let i = 0; i < allBudgets.length; i++) { %>
                 <li>
-                    <a href="/budgets/<%=i%>"><%=allBudgets[i].date %>, <%=allBudgets[i].name %>, <%=allBudgets[i].amount %>$</a>
-                    <form action="/budgets/<%= i %>" method="POST">
+                    <%=allBudgets[i].date %>,   <a href="/budgets/<%=i%>">   <%=allBudgets[i].name %>,</a>   <%=allBudgets[i].amount %>$
+                    <form action="/budgets/<%= i %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete">
                     </form>
                 </li>
             <% } %>
         </ul>
+        <script src="budget.js" defer>
+
+            const budgets = budgets;
+
+            let sum = 1000000;
+
+            for (let i = 0; i< budgets.length; i++)
+            {
+                sum += parseInt(budgets[i].amount)
+            }
+
+            console.log( "Bank Account Total: $", sum);
+
+            if(sum < 0){
+                // document.style.total.color = red;
+                document.getElementByClass("total").color = "red";
+                body.total.innerHTML = "Bank Total" + sum;
+            }else if(sum > 1000){
+                // document.style.total.color = green;
+                document.getElementByClass("total").color = "green";
+                body.total.innerHTML = "Bank Total" + sum;
+            }else{
+                // document.style.total.color = blue;
+                document.getElementByClass("total").color = "yellow";
+                body.total.innerHTML = "Bank Total" + sum;
+            }
+
+            console.log( "Bank Account Total: $", sum);
+        </script>
     </body>
 </html>
