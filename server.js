@@ -33,10 +33,13 @@ app.get("/budgets/new", (request, response) => {
 })
 
 app.post("/budgets", (request, response) => {
-    console.log(request.body)
     budgets.push(request.body);
-    console.log(budgets)
     response.redirect("/budgets");
+});
+
+app.delete('/budgets/:id', (request, response) => {
+    budgets.splice(request.params.id, 1)
+    response.redirect("/budgets")
 });
 
 app.get('/budgets/:index', (request, response) => {
